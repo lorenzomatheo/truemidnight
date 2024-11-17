@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MidNight | Ecommerce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+</head>
+<body id="principal">
+    <div class="navbar">
+        <div class="header-inner-content">
+            <h1 class="logo">Mid<span>Night</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'produtos' %}">Produtos</a></li>
+                    <li><a href="{% url 'cart_view' %}">Carrinho</a></li>
+                    <li><a href="{% url 'conta' %}">Conta</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icon-container">
+                <img src="{% static 'images/cart.png' %}" alt="Ícone do carrinho">
+                <img src="{% static 'images/menu.png' %}" class="menu-button" alt="Ícone do menu">
+            </div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="header-inner-content">
+            <div class="header-bottom-side">
+                <div class="header-bottom-side-left">
+                    <h2>Nome do Produto</h2>
+                    <p>
+                        Texto falando sobre o produto, uma breve descrição que chama a atenção e destaca suas principais características.
+                    </p>
+                    <button>Ver Agora &#8594;</button>
+                </div>
+                <div class="header-bottom-side-right">
+                    <img src="{% static 'images/gaming-msi-header.png' %}" alt="Imagem do produto em destaque" />
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

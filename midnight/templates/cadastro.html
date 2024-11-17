@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+    <title>CADASTRO</title>
+</head>
+
+<body id="principal">
+
+    <div id="cadastro">
+
+        <div class="caixa">
+            
+            <img src="{% static 'images/welcome_to_the_black_panther_party.jpg' %}" alt="Logo Midnight" style="width: 250px; height: auto;">
+
+            <h1>CADASTRO</h1>
+
+            <form method="post">
+                {% csrf_token %}
+                
+                
+                <!-- Exibe as mensagens de erro ou sucesso -->
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="nome">
+                    <input type="text" name="username" placeholder="Nome de Usuário" required>
+                </div>
+
+                <div class="email">
+                    <input type="email" name="email" placeholder="E-mail" required>
+                </div>
+
+                <div class="senha">
+                    <input type="password" name="senha" placeholder="Senha" required>
+                </div>                
+
+                <div class="cadastrar">
+                    <input type="submit" value="Cadastrar"> 
+                </div>                
+
+            </form>
+        </div>
+
+    </div>
+    
+</body>
+
+</html>

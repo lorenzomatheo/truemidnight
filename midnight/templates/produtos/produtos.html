@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - MidNight</title>
+    <link rel="stylesheet" href="{% static 'css/stylus.css' %}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1 class="logo">Mid<span>Night</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'produtos' %}">Produtos</a></li>
+                    <li><a href="{% url 'carrinho' %}">Carrinho</a></li>
+                    <li><a href="{% url 'conta' %}">Conta</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<main>
+        <div class="search-filter-container">
+            <input type="text" placeholder="Buscar produtos..." class="search-bar">
+            <div class="filters">
+                <label for="categories">Categoria:</label>
+                <select id="categories">
+                    <option value="tudo">Tudo</option>
+                    <option value="pecas">Peças</option>
+                    <option value="acessorios">Acessórios</option>
+                    <option value="performance">Performance</option>
+                </select>
+
+                <label for="price">Preço:</label>
+                <select id="price">
+                    <option value="all">Todos</option>
+                    <option value="low">Até R$100</option>
+                    <option value="medium">R$100 - R$500</option>
+                    <option value="high">Acima de R$500</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="images/products/product-1.png" alt="Produto 1">
+                <h3 class="product-name">Produto 1</h3>
+                <p class="product-price">R$200,00</p>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

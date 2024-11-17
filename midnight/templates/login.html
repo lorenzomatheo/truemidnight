@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <title>ENTRAR</title>
+</head>
+
+<body id="principal">
+
+    <div id="login">
+
+        <div class="caixa">
+            <img src="{% static 'images/welcome_to_the_black_panther_party.jpg' %}" alt="Logo Midnight" style="width: 250px; height: auto;">
+            <h1>LOGIN</h1>
+
+            <!-- Bloco para mensagens de erro -->
+            {% if messages %}
+                <div>
+                    {% for message in messages %}
+                        <p style="color: red;">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form method="POST" action="">
+                {% csrf_token %}
+                
+                <div class="email">
+                    <input type="email" name="email" placeholder="E-mail" required>
+                </div>
+
+                <div class="senha">
+                    <input type="password" name="senha" placeholder="Senha" required>
+                </div>
+
+                <div class="entrar">
+                    <p>Ainda não tem uma conta? <a href="{% url 'cadastro_view' %}">Crie uma.</a></p>  <!-- Use a tag url aqui -->
+                    <input type="submit" value="Entrar">
+                </div>
+            </form>
+        </div>
+
+    </div>
+    
+</body>
+
+</html>

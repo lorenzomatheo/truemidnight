@@ -1,0 +1,76 @@
+/* Estilos do corpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1F1D20;
+    color: #fff;
+    margin: 0; 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    margin-top: 60px;
+}
+
+/* Estilos dos links */
+a {
+    text-decoration: none;
+    color: red; 
+}
+
+/* Estilos do container de login */
+#Login {
+    justify-content: center;
+    height: 100vh; /* Altura da viewport */
+    margin: 0; /* Remove margens padrão */
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+}
+
+/* Estilos dos inputs */
+.nome input,
+.email input,
+.senha input {
+    border-radius: 15px;
+    border: none;
+    width: 250px;
+    height: 40px;
+    padding-left: 15px;
+    background-color: #FF023A;
+    color: #FCFCF6;
+    margin-bottom: 15px; /* Apenas para .nome, mas pode ser ajustado conforme necessário */
+}
+
+/* Estilos do botão de entrar */
+.cadastrar input {
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: #FF023A;
+    color: #FCFCF6;
+}
+
+/* Estilo do placeholder */
+input::placeholder {
+    color: #FCFCF6; /* Corrigido */
+}
+
+/* Estilos do cabeçalho */
+h1 {
+    color: #FCFCF6;
+}
+
+/* Estilo da caixa */
+.caixa {
+    margin-top: 65px;
+}
+
+.caixa img {
+    width: 15px;
+}
+
+/* Estilos para inputs em foco */
+input:focus {
+    outline: none;
+}
