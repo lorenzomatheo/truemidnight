@@ -90,11 +90,9 @@ def index_view(request):
 def cart_view(request):
     return render(request, 'cart.html')
 
-def produtos_view(request):
-    lista_produtos = Produto.objects.all()  # Carrega todos os produtos
-    return render(request, 'produtos/produtos.html', {'produtos': lista_produtos})
-
 def conta_view(request):
     return render(request, 'conta.html')  # Certifique-se de ter o template 'conta.html'
 
-
+def produtos_view(request):
+    produtos = Produto.objects.all()
+    return render(request, 'produtos/produtos.html', {'produtos': produtos})

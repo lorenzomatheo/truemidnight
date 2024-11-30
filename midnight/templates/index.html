@@ -18,7 +18,7 @@
                 <ul>
                     <li><a href="{% url 'index' %}">Home</a></li>
                     <li><a href="{% url 'produtos' %}">Produtos</a></li>
-                    <li><a href="{% url 'cart_view' %}">Carrinho</a></li>
+                    <li><a href="{% url 'cart' %}">Carrinho</a></li>
                     <li><a href="{% url 'conta' %}">Conta</a></li>
                 </ul>
             </nav>
@@ -32,14 +32,30 @@
         <div class="header-inner-content">
             <div class="header-bottom-side">
                 <div class="header-bottom-side-left">
-                    <h2>Nome do Produto</h2>
+                    <h2>Kit Aerofólio De Carro Universal Fibra de Carbono</h2>
                     <p>
-                        Texto falando sobre o produto, uma breve descrição que chama a atenção e destaca suas principais características.
+                        Material Premium:<br />
+                        Fabricado em ABS de alta qualidade, resistente ao desgaste e superdurável.<br /><br />
+    
+                        Estabilidade Extra:<br />
+                        Melhore a aerodinâmica e a estabilidade do seu carro em alta velocidade.<br /><br />
+    
+                        Tamanho Compacto:<br />
+                        25 cm x 7 cm x 3,5 cm – perfeito para qualquer veículo.<br /><br />
+    
+                        Instalação Fácil:<br />
+                        Design autoadesivo, sem necessidade de ferramentas ou furadeiras. Limpe, cole e pronto!<br /><br />
+                        
+    
+                        Estilo Exclusivo:<br />
+                        Decore seu carro com um acessório elegante e universal que combina com qualquer modelo.<br /><br />
                     </p>
-                    <button>Ver Agora &#8594;</button>
+                    <a href="{% url 'produtos' %}" class="header-button">
+                        Ver agora lista de produtos como esse &#8594;
+                    </a>                    
                 </div>
                 <div class="header-bottom-side-right">
-                    <img src="{% static 'images/gaming-msi-header.png' %}" alt="Imagem do produto em destaque" />
+                    <img src="{% static 'images/WhatsApp_Image_2024-11-14_at_22.42.24__2_-removebg.png' %}" alt="Imagem do produto em destaque" />
                 </div>
             </div>
         </div>

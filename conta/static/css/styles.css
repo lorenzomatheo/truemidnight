@@ -1,0 +1,67 @@
+/* Geral */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Cabeçalho */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Parágrafo */
+p {
+    font-size: 16px;
+    margin: 10px 0 20px;
+    color: #666;
+}
+
+/* Links */
+a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #0066cc;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #004999;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    a {
+        font-size: 12px;
+    }
+}

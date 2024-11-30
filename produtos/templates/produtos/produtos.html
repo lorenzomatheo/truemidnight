@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - MidNight</title>
+    <link rel="stylesheet" href="{% static 'css/stylus.css' %}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1 class="logo">Mid<span>Night</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'produtos' %}">Produtos</a></li>
+                    <li><a href="{% url 'cart' %}">Carrinho</a></li>
+                    <li><a href="{% url 'conta' %}">Conta</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Formulário de busca e filtros -->
+        <div class="search-filter-container">
+            <form method="GET" action="{% url 'produtos' %}">
+                <input type="text" name="search" placeholder="Buscar produtos..." class="search-bar" value="{{ request.GET.search }}">
+                
+                <div class="filters">
+                    <label for="categories">Categoria:</label>
+                    <select name="category" id="categories">
+                        <option value="tudo" {% if request.GET.category == "tudo" %}selected{% endif %}>Tudo</option>
+                        <option value="pecas" {% if request.GET.category == "pecas" %}selected{% endif %}>Peças</option>
+                        <option value="acessorios" {% if request.GET.category == "acessorios" %}selected{% endif %}>Acessórios</option>
+                        <option value="performance" {% if request.GET.category == "performance" %}selected{% endif %}>Performance</option>
+                    </select>
+
+                    <label for="price">Preço:</label>
+                    <select name="price" id="price">
+                        <option value="all" {% if request.GET.price == "all" %}selected{% endif %}>Todos</option>
+                        <option value="low" {% if request.GET.price == "low" %}selected{% endif %}>Até R$100</option>
+                        <option value="medium" {% if request.GET.price == "medium" %}selected{% endif %}>R$100 - R$500</option>
+                        <option value="high" {% if request.GET.price == "high" %}selected{% endif %}>Acima de R$500</option>
+                    </select>
+                </div>
+
+                <button type="submit">Aplicar Filtros</button>
+            </form>
+        </div>
+
+        <!-- Exibição dos produtos -->
+        <h1>Produtos</h1>
+        <div>
+        <ul>
+        {% for produto in produtos %}
+            <div>
+            <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" style="width: 150px; height: 150px;" />
+            <ul>
+                <li>
+                    {{ produto.nome }} - R${{ produto.preco }}
+                    <form action="{% url 'adicionar_ao_carrinho' produto.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Adicionar ao Carrinho</button>
+                    </form>
+                </li>
+            </ul>
+            
+            </div>
+        {% endfor %}
+        </ul>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Mid<span>Night</span></div>
+            <p>&copy; 2024 Todos os direitos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>

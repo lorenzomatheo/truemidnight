@@ -1,0 +1,8 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<div class="container">
+    <h1>Minha Conta</h1>
+    <p>Email: {{ user.email }}</p>
+    <a href="{% url 'alterar_email' %}">Alterar Email</a> | 
+    <a href="{% url 'alterar_senha' %}">Alterar Senha</a>
+</div>

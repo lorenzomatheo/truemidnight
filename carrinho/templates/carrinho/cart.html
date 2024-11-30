@@ -1,0 +1,41 @@
+<!-- carrinho/templates/carrinho/cart.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="{% static 'css/stylus.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Meu Carrinho</h1>
+    </header>
+
+    <main>
+        {% if carrinho.itens.exists %}
+            <ul>
+                {% for item in carrinho.itens.all %}
+                    <li>
+                        <img src="{{ item.produto.imagem.url }}" alt="{{ item.produto.nome }}" style="width: 100px;">
+                        {{ item.produto.nome }} - R${{ item.produto.preco }}
+                        Quantidade: {{ item.quantidade }}
+                        <form action="{% url 'carrinho:atualizar_quantidade' item.id %}" method="post">
+                            {% csrf_token %}
+                            <button name="action" value="increment">+</button>
+                            <button name="action" value="decrement">-</button>
+                        </form>
+                        <form action="{% url 'carrinho:remover_do_carrinho' item.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Remover</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>Total: R${{ carrinho.total }}</p>
+        {% else %}
+            <p>Seu carrinho está vazio.</p>
+        {% endif %}
+    </main>
+</body>
+</html>
