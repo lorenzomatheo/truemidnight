@@ -24,7 +24,7 @@ class ItemCarrinho(models.Model):
 
     def __str__(self):
         return f"{self.quantidade} x {self.produto.nome}"
-    
+
     class Meta:
-        db_table = 'produtos_itemcarrinho'
+        db_table = 'carrinho_itemcarrinho'  # Tabela específica para o app carrinho
 
