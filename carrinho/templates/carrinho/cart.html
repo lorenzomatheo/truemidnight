@@ -1,41 +1,56 @@
-<!-- carrinho/templates/carrinho/cart.html -->
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho</title>
-    <link rel="stylesheet" href="{% static 'css/stylus.css' %}">
+    {% load static %}
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles1.css' %}">
 </head>
 <body>
     <header>
-        <h1>Meu Carrinho</h1>
+        <h1 class="logo">Mid<span>Night</span></h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'produtos' %}">Produtos</a></li>
+                <li><a href="{% url 'cart' %}">Carrinho</a></li>
+                <li><a href="{% url 'conta' %}">Conta</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        {% if carrinho.itens.exists %}
+        <h1>Seu Carrinho</h1>
+
+        {% if carrinho and carrinho.itens.all %}
             <ul>
                 {% for item in carrinho.itens.all %}
+                <div>
+                    <img src="{{ item.produto.imagem.url }}" alt="{{ item.produto.nome }}" style="width: 150px; height: 150px;" />
                     <li>
-                        <img src="{{ item.produto.imagem.url }}" alt="{{ item.produto.nome }}" style="width: 100px;">
-                        {{ item.produto.nome }} - R${{ item.produto.preco }}
-                        Quantidade: {{ item.quantidade }}
-                        <form action="{% url 'carrinho:atualizar_quantidade' item.id %}" method="post">
+                        {{ item.produto.nome }} - R$ {{ item.produto.preco }}  
+                        Quantidade: {{ item.quantidade }}  
+                        Total: R$ {{ item.preco_total }}
+
+                        <form method="POST" action="{% url 'atualizar_quantidade' item.id %}">
                             {% csrf_token %}
-                            <button name="action" value="increment">+</button>
-                            <button name="action" value="decrement">-</button>
-                        </form>
-                        <form action="{% url 'carrinho:remover_do_carrinho' item.id %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit">Remover</button>
+                            <button type="submit" name="action" value="increment">+</button>
+                            <button type="submit" name="action" value="decrement">-</button>
                         </form>
                     </li>
+                </div>
                 {% endfor %}
             </ul>
-            <p>Total: R${{ carrinho.total }}</p>
+            <p>Total do Carrinho: R$ {{ carrinho.total }}</p>
         {% else %}
             <p>Seu carrinho está vazio.</p>
         {% endif %}
     </main>
+
+    <footer>
+        <p>&copy; 2024 MidNight - Todos os direitos reservados</p>
+    </footer>
 </body>
 </html>

@@ -38,6 +38,8 @@ def adicionar_ao_carrinho(request, produto_id):
     # Busca ou cria um item do carrinho relacionado ao produto
     item, item_created = ItemCarrinho.objects.get_or_create(carrinho=carrinho, produto=produto)
 
+    # Faltando z
+
     # Se o item já existir no carrinho, incrementa a quantidade
     if not item_created:
         item.quantidade += 1
