@@ -39,6 +39,10 @@
                             <button type="submit" name="action" value="increment">+</button>
                             <button type="submit" name="action" value="decrement">-</button>
                         </form>
+                        <form method="POST" action="{% url 'carrinho:remover_do_carrinho' item.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Remover</button>
+                        </form>                      
                     </li>
                 </div>
                 {% endfor %}
@@ -50,7 +54,10 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 MidNight - Todos os direitos reservados</p>
+        <div class="footer-content">
+            <div class="footer-logo">Mid<span>Night</span></div>
+            <p>&copy; 2024 Todos os direitos reservados</p>
+        </div>
     </footer>
 </body>
 </html>

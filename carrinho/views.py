@@ -33,7 +33,17 @@ def atualizar_quantidade(request, item_id):
 
 @login_required
 def remover_do_carrinho(request, item_id):
-    item = get_object_or_404(ItemCarrinho, id=item_id)
+    # Obtém o carrinho do usuário logado
+    carrinho = Carrinho.objects.get(usuario=request.user)
+    
+    # Encontre o item do carrinho com o item_id
+    item = get_object_or_404(ItemCarrinho, id=item_id, carrinho=carrinho)
+    
+    # Remove o item do carrinho
     item.delete()
-    return redirect('carrinho:visualizar_carrinho')
+
+    # Redireciona de volta para a página do carrinho
+    return redirect('visualizar_carrinho')
+
+
 
